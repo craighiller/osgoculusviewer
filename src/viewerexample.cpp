@@ -53,6 +53,7 @@ int main( int argc, char** argv )
 
 	if (gc.valid()) {
 		gc->setClearColor(osg::Vec4(0.2f, 0.2f, 0.4f, 1.0f));
+				
 		gc->setClearMask(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	}
 
@@ -61,7 +62,7 @@ int main( int argc, char** argv )
 	viewer.getCamera()->setViewport(0, 0, traits->width, traits->height);
 
 	// Disable automatic computation of near and far plane
-	viewer.getCamera()->setComputeNearFarMode( osg::CullSettings::DO_NOT_COMPUTE_NEAR_FAR );
+	viewer.getCamera()->setComputeNearFarMode( osg::CullSettings::COMPUTE_NEAR_FAR_USING_BOUNDING_VOLUMES );
 	viewer.setCameraManipulator(cameraManipulator);
 	viewer.realize();
 	

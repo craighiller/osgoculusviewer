@@ -43,10 +43,10 @@ int main( int argc, char** argv )
 	textureRight->setInternalFormat(GL_RGBA);
 	// Initialize RTT cameras for each eye
 	osg::ref_ptr<osg::Camera> leftEyeRTTCamera = oculusDevice->createRTTCamera(textureLeft, OculusDevice::LEFT, osg::Camera::ABSOLUTE_RF);
-	leftEyeRTTCamera->setComputeNearFarMode( osg::CullSettings::DO_NOT_COMPUTE_NEAR_FAR );
+	leftEyeRTTCamera->setComputeNearFarMode( osg::CullSettings::COMPUTE_NEAR_FAR_USING_BOUNDING_VOLUMES );
 	leftEyeRTTCamera->addChild( loadedModel );
 	osg::ref_ptr<osg::Camera> rightEyeRTTCamera = oculusDevice->createRTTCamera(textureRight, OculusDevice::RIGHT, osg::Camera::ABSOLUTE_RF);
-	rightEyeRTTCamera->setComputeNearFarMode( osg::CullSettings::DO_NOT_COMPUTE_NEAR_FAR );
+	rightEyeRTTCamera->setComputeNearFarMode( osg::CullSettings::COMPUTE_NEAR_FAR_USING_BOUNDING_VOLUMES );
 	rightEyeRTTCamera->addChild( loadedModel );
 	// Create HUD cameras for each eye
 	osg::ref_ptr<osg::Camera> leftCameraWarp = oculusDevice->createWarpOrthoCamera(0.0, 1.0, 0.0, 1.0);

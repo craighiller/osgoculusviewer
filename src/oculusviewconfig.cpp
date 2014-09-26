@@ -30,7 +30,8 @@ void OculusViewConfig::configure(osgViewer::View& view) const
 	// Use full view port
 	camera->setViewport(new osg::Viewport(0, 0, traits->width, traits->height));
 	// Disable automatic computation of near and far plane on main camera, will propagate to slave cameras
-	camera->setComputeNearFarMode( osg::CullSettings::DO_NOT_COMPUTE_NEAR_FAR );
+	//// actually, do automatically compute the near and far planes...otherwise we wont see anything
+	camera->setComputeNearFarMode( osg::CullSettings::COMPUTE_NEAR_FAR_USING_PRIMITIVES );
 	const int textureWidth  = m_device->renderTargetWidth()/2;
 	const int textureHeight = m_device->renderTargetHeight();
 	// master projection matrix
