@@ -6,7 +6,7 @@
  */
 
 #include <osgDB/ReadFile>
-#include <osgGA/TrackballManipulator>
+#include <osgGA/FirstPersonManipulator>
 
 #include "oculusviewer.h"
 #include "oculuseventhandler.h"
@@ -26,7 +26,7 @@ int main( int argc, char** argv )
 	if (!loadedModel) return 0;
 
 	// Create Trackball manipulator
-	osg::ref_ptr<osgGA::CameraManipulator> cameraManipulator = new osgGA::TrackballManipulator;
+	osg::ref_ptr<osgGA::CameraManipulator> cameraManipulator = new osgGA::FirstPersonManipulator;
 	const osg::BoundingSphere& bs = loadedModel->getBound();
 
 	if (bs.valid()) {
@@ -53,7 +53,7 @@ int main( int argc, char** argv )
 
 	if (gc.valid()) {
 		gc->setClearColor(osg::Vec4(0.2f, 0.2f, 0.4f, 1.0f));
-				
+
 		gc->setClearMask(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	}
 
@@ -65,7 +65,7 @@ int main( int argc, char** argv )
 	viewer.getCamera()->setComputeNearFarMode( osg::CullSettings::COMPUTE_NEAR_FAR_USING_BOUNDING_VOLUMES );
 	viewer.setCameraManipulator(cameraManipulator);
 	viewer.realize();
-	
+
 	// Subtract at least one bit of the node mask to disable rendering for main camera
 	osg::Node::NodeMask sceneNodeMask = loadedModel->getNodeMask() & ~0x1;
 	loadedModel->setNodeMask(sceneNodeMask);
