@@ -10,7 +10,7 @@
 #include <osgViewer/CompositeViewer>
 
 #include <osgDB/ReadFile>
-#include <osgGA/TrackballManipulator>
+#include <osgGA/FirstPersonManipulator>
 
 
 int main( int argc, char** argv )
@@ -72,8 +72,8 @@ int main( int argc, char** argv )
 	oculusDevice->applyShaderParameters(leftEyeStateSet, program, textureLeft, OculusDevice::LEFT);
 	oculusDevice->applyShaderParameters(rightEyeStateSet, program, textureRight, OculusDevice::RIGHT);
 
-	// Create Trackball manipulator
-	osg::ref_ptr<osgGA::CameraManipulator> cameraManipulator = new osgGA::TrackballManipulator;
+	// Create Firstperson manipulator
+	osg::ref_ptr<osgGA::CameraManipulator> cameraManipulator = new osgGA::FirstPersonManipulator;
 	const osg::BoundingSphere& bs = loadedModel->getBound();
 
 	if (bs.valid()) {
