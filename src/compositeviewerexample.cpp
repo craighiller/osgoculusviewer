@@ -77,8 +77,9 @@ int main( int argc, char** argv )
 	const osg::BoundingSphere& bs = loadedModel->getBound();
 
 	if (bs.valid()) {
-		// Adjust view to object view
-		cameraManipulator->setHomePosition(osg::Vec3(0, bs.radius()*1.5, 0), osg::Vec3(0, 0, 0), osg::Vec3(0, 0, 1));
+		// Adjust view to object view300
+        cameraManipulator->setAutoComputeHomePosition(1);
+		//cameraManipulator->setHomePosition(osg::Vec3(0, bs.radius()*1.5, 0), osg::Vec3(0, 0, 0), osg::Vec3(0, 0, 1));
 	}
 
 	// Add cameras to groups
